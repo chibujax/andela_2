@@ -89,7 +89,7 @@
     });
   });
 
-  var getPrimesLab = require('../app/getprimes/library.JS')
+  var getPrimesLab = require('../app/getprimes/library.js')
 
   describe("Test cases for getPrimes function", function() {
       it("should return 'negative integers can not be prime' for negative integers", function() {
@@ -97,7 +97,7 @@
       });
     
       it("should return 'Must be a number' for NaN", function() {
-        expect(getPrimesLab.getPrimes('cha')).toEqual("Must be a number' for NaN");
+        expect(getPrimesLab.getPrimes('cha')).toEqual("Must be a number");
       });   
     
       it("should return '0 can not be prime' for 0", function() {
@@ -105,7 +105,7 @@
       });   
 
       it("should return an empty array if argument is equal to 1", function() {
-        expect(getPrimesLab.getPrimes(1)).toBe([]);
+        expect(getPrimesLab.getPrimes(1)[0]).toBeUndefined();
       });
 
       it("should return [ 2, 3, 5, 7, 11, 13, 17, 19, 23, 29 ] if argument is equal to 29", function() {
@@ -129,7 +129,7 @@
       });
 
       it("should return the equivalent of getPrimes(29) if the argument passed is equal to getPrimes(30)", function() {
-        expect(getPrimesLab.getPrimes(30)).toEqual(getPrimes(29));
+        expect(getPrimesLab.getPrimes(30)).toEqual(getPrimesLab.getPrimes(29));
       });
 
       it("should return an [ 2 ] if the argument passed is equal to 2", function() {
