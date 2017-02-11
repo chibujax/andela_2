@@ -88,4 +88,58 @@
       });
     });
   });
+
+  var getPrimesLab = require('../app/getprimes/library.JS')
+
+  describe("Test cases for getPrimes function", function() {
+      it("should return 'negative integers can not be prime' for negative integers", function() {
+        expect(getPrimesLab.getPrimes(-23)).toEqual("negative integers can not be prime");
+      });
+    
+      it("should return 'Must be a number' for NaN", function() {
+        expect(getPrimesLab.getPrimes('cha')).toEqual("Must be a number' for NaN");
+      });   
+    
+      it("should return '0 can not be prime' for 0", function() {
+        expect(getPrimesLab.getPrimes(0)).toEqual("0 cannot be prime");
+      });   
+
+      it("should return an empty array if argument is equal to 1", function() {
+        expect(getPrimesLab.getPrimes(1)).toBe([]);
+      });
+
+      it("should return [ 2, 3, 5, 7, 11, 13, 17, 19, 23, 29 ] if argument is equal to 29", function() {
+        expect(getPrimesLab.getPrimes(29)).toEqual([ 2, 3, 5, 7, 11, 13, 17, 19, 23, 29 ]);
+      });
+
+      it("should return an [2,3] if the argument passed is equal to 4", function() {
+        expect(getPrimesLab.getPrimes(4)).toEqual([ 2, 3 ]);
+      });
+
+      it("should return an [2,3,5,7] if the argument passed is equal to 7", function() {
+        expect(getPrimesLab.getPrimes(7)).toEqual([ 2, 3, 5, 7 ]);
+      });
+
+      it("should return an [ 2, 3, 5, 7, 11 ] if the argument passed is equal to 12", function() {
+        expect(getPrimesLab.getPrimes(12)).toEqual([ 2, 3, 5, 7, 11 ]);
+      });
+
+      it("should return an [ 2, 3, 5, 7, 11, 13, 17, 19 ] if the argument passed is equal to 20", function() {
+        expect(getPrimesLab.getPrimes(12)).toEqual([ 2, 3, 5, 7, 11 ]);
+      });
+
+      it("should return the equivalent of getPrimes(29) if the argument passed is equal to getPrimes(30)", function() {
+        expect(getPrimesLab.getPrimes(30)).toEqual(getPrimes(29));
+      });
+
+      it("should return an [ 2 ] if the argument passed is equal to 2", function() {
+        expect(getPrimesLab.getPrimes(2)).toEqual([ 2 ]);
+      });
+
+      it("should return an [ 2, 3 ] if the argument passed is equal to 3", function() {
+        expect(getPrimesLab.getPrimes(3)).toEqual([ 2, 3 ]);
+      });
+    
+  });
+
 })();
