@@ -1,0 +1,18 @@
+{
+  "name": "andela_day2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "chibueze uchendu",
+  "license": "ISC",
+  "description": "Andela second test",
+  "devDependencies": {
+    "jasmine": "^2.5.3"
+  }
+}
