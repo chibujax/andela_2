@@ -1,26 +1,53 @@
 'use strict'
-
 module.exports = {
-	Car: function (name, model, type) {
-		if (typeof(name) !== "string"){
-		    name =null;
+	Phone: function(name,model,os) {	
+		//Ensure Only string can be assigened. Not [1]
+		(typeof name == "string") ? this.name = name	: this.name = "General";
+		(typeof model == "string") ? this.model = model	: this.model = "Mobile";
+		(typeof os == "string") ? this.os = os	: this.os = "Android";
+		this.isPowerOn = false;	
+		this.isCharging = false;
+		this.charge = function() {		
+			this.isCharging = true;		
+		}	
+		this.stopCharge = function() {	
+			this.isCharging = false;	
 		}
-		if (typeof(model) !== "string"){
-		    model =null;
+		this.powerOn = function() {		
+			this.isPowerOn = true;		
 		}
-		if (typeof(type) !== "string"){
-		    type =null;
-		} 	 	 
-		this.name = ((name == null) ? 'General' : name);
-		this.model = ((model == null) ? 'GM' : model);
-		this.type = type;
-		this.numOfDoors = ((name == 'Porshe' || name == 'Koenigsegg') ? 2 : 4);
-		this.numOfWheels = ((type == 'trailer') ? 8 : 4);
-		this.isSaloon = ((type == 'trailer') ? false:  true);
-		this.speed = '0 km/h';
-		this.drive = function (spd) {
-			this.speed = (type == 'trailer') ? (spd * 11) + ' km/h' : (spd * 50) + ' km/h';
-		return this;
+		this.powerOff = function() {	
+			this.isPowerOn = false;		
+		}	
+		if (this.name  === "Tecno" || this.name === "Infinix" || this.name === "General") { 	
+		  	this.CPU = "MTK Processor";		
+		  	this.isAndroid = true;			
+		  	this.doubleSim = true;			
+		  	this.isIphone = false;			
+		}	
+		else {			
+			if (this.os === "iOS") {
+				this.CPU = "Apple Chipset";		
+			  	this.isAndroid = false;			
+			  	this.isIphone = true;			
+			  	this.doubleSim = false;			
+			  	this.isCharging = false;		
+			}
+			else if (this.os === "Android") {
+				this.CPU = "SnapDragon Processor";		
+			  	this.isAndroid = true;			
+			  	this.doubleSim = false;			
+			  	this.isIphone = false;			
+			  	this.isCharging = false;		
+			}
+			else {		
+				this.CPU = "Microsoft Processor/Java CPU";		
+				this.isAndroid = false;			
+			  	this.isIphone = false;			
+			  	this.doubleSim = false;			
+			  	this.isCharging = false;		
+			}
 		}
 	}
+
 };

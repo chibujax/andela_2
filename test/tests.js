@@ -2,7 +2,7 @@
   'use strict';
   var datatypeslab = require("../app/DataTypesLab/library.js");
   var getPrimesLab = require('../app/getprimes/library.js');
-  var cars = require('../app/OOP/library.js');
+  var gsm = require('../app/OOP/library.js');
 
 
   //var geo = require("../app/arit_geo/arit.js");
@@ -144,61 +144,56 @@
     
   });
 
-  describe("Car Class: Create a car, make it drive", function() {
+  describe("Phone Class: Create a Phone, make it charge", function() {
 
-    it("The car should be a type of `object`, and an instance of the `Car` class", function() {
-      var honda = new cars.Car('Honda');
-      expect(typeof honda).toEqual(typeof {});
-      expect(honda instanceof cars.Car).toBeTruthy();
+    it("The phone should be a type of `object`, and an instance of the `Phone` class", function() {
+      var tecno = new gsm.Phone('Tecno');
+      expect(typeof tecno).toEqual(typeof {});
+      expect(tecno instanceof gsm.Phone).toBeTruthy();
     });
 
-    it("The car should be called 'General' if no name is passed as a parameter", function() {
-      var gm = new cars.Car();
-      expect(gm.name).toEqual('General');
-      expect(gm.model).toBe('GM');
+    it("The Phone should be called 'General' if no name is passed as a parameter", function() {
+      var gm = new gsm.Phone();
+      expect(gm.name).toBe('General');
+      expect(gm.model).toBe('Mobile');
     });
 
-    it("The car name and model should be a property of the car", function() {
-      var toyota  = new cars.Car('Toyota', 'Corolla');
-      expect(toyota.name).toBe('Toyota');
-      expect(toyota.model).toBe('Corolla');
+    it("The phone name and model should be a property of the Phone", function() {
+      var Infinix  = new gsm.Phone('Infinix', 'S4');
+      expect(Infinix.name).toBe('Infinix');
+      expect(Infinix.model).toBe('S4');
     });
 
-    it("The car shoud have four (4) doors except its a Porshe or Koenigsegg", function() {
-      var opel  = new cars.Car('Opel', 'Omega 3');
-      expect(opel.numOfDoors).toBe(4);
-
-      var porshe = new cars.Car('Porshe', '911 Turbo');
-      expect(porshe.numOfDoors).toBe(2);
-      porshe.drive(5);
-      expect(porshe.speed).toBe('250 km/h');
-      expect((function(){return new cars.Car('Koenigsegg', 'Agera R');}()).numOfDoors).toBe(2);
+    it("The Phone should be able to charge and stop charging", function() {
+      var Infinix  = new gsm.Phone('Infinix', 'S4');
+      expect(Infinix.isCharging).toBe(false);
+      Infinix.charge();
+      expect(Infinix.isCharging).toBe(true);
+      Infinix.stopCharge();
+      expect(Infinix.isCharging).toBe(false);
     });
 
-    it("The car shoud have four (4) wheels except its a type of trailer", function() {
-      var man  = new cars.Car('MAN', 'Truck', 'trailer');
-      expect(man.numOfWheels).toBe(8);
-      expect(man.isSaloon).toBe(false);
+    it("The phone should be powered off by default until powered on", function() {
+      var iPhone  = new gsm.Phone('iPhone', 'iPhone 5c', "iOS");
+      expect(iPhone.isPowerOn).toBe(false);
+      expect(iPhone.isAndroid).not.toBeTruthy();
+      expect(iPhone.isIphone).toBeTruthy();
+      iPhone.powerOn();
+      expect(iPhone.isPowerOn).toBeTruthy();
+      iPhone.powerOff();
+      expect(iPhone.isPowerOn).not.toBeTruthy();
+    });    
 
-      var koenigsegg = new cars.Car('Koenigsegg', 'Agera R');
-      expect(koenigsegg.numOfWheels).toBe(4);
-      expect(koenigsegg.isSaloon).toBeTruthy();
+    it("The phone should know the difference between iPhone and MTK devices ", function() {
+      var nokia  = new gsm.Phone('Nokia', 'c4','Unknonw');
+      var samsung  = new gsm.Phone('Samsung', 'S3', 'Android');
+      var iphone  = new gsm.Phone('iPhone', 'i7', 'iOS');
+      expect(nokia.doubleSim).toBe(false);
+      expect(nokia.isAndroid).toBe(false);
+      expect(samsung.isAndroid).toBe(true);
+      expect(iphone.isIphone).toBe(true);
     });
 
-    it("The Trailer should have speed 0 km/h until you put `the pedal to the metal`", function() {
-      var man  = new cars.Car('MAN', 'Truck', 'trailer');
-      expect(man.speed).toBe('0 km/h');
-      man.drive(7);
-      expect(man.speed).toBe('77 km/h');
-    });
-
-    it("The car drive function should return the instance of the Car class", function() {
-      var man  = new cars.Car('MAN', 'Truck', 'trailer');
-      var drivingMan = man.drive(7);
-      expect(drivingMan instanceof cars.Car).toBeTruthy();
-      expect(typeof drivingMan.drive).toBe(typeof (function (){}));
-      expect(man.speed).toBe(drivingMan.speed);
-    });
   });
 
 
