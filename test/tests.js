@@ -2,7 +2,7 @@
   'use strict';
   var datatypeslab = require("../app/DataTypesLab/library.js");
   var getPrimesLab = require('../app/getprimes/library.js');
-  var gsm = require('../app/OOP/library.js');
+  var gsm = require('../app/OOP/library.js').Phone;
 
 
   //var geo = require("../app/arit_geo/arit.js");
@@ -147,25 +147,25 @@
   describe("Phone Class: Create a Phone, make it charge", function() {
 
     it("The phone should be a type of `object`, and an instance of the `Phone` class", function() {
-      var tecno = new gsm.Phone('Tecno');
+      var tecno = new Phone('Tecno');
       expect(typeof tecno).toEqual(typeof {});
-      expect(tecno instanceof gsm.Phone).toBeTruthy();
+      expect(tecno instanceof Phone).toBeTruthy();
     });
 
     it("The Phone should be called 'General' if no name is passed as a parameter", function() {
-      var gm = new gsm.Phone();
+      var gm = new Phone();
       expect(gm.name).toBe('General');
       expect(gm.model).toBe('Mobile');
     });
 
     it("The phone name and model should be a property of the Phone", function() {
-      var Infinix  = new gsm.Phone('Infinix', 'S4');
+      var Infinix  = new Phone('Infinix', 'S4');
       expect(Infinix.name).toBe('Infinix');
       expect(Infinix.model).toBe('S4');
     });
 
     it("The Phone should be able to charge and stop charging", function() {
-      var Infinix  = new gsm.Phone('Infinix', 'S4');
+      var Infinix  = new Phone('Infinix', 'S4');
       expect(Infinix.isCharging).toBe(false);
       Infinix.charge();
       expect(Infinix.isCharging).toBe(true);
@@ -174,7 +174,7 @@
     });
 
     it("The phone should be powered off by default until powered on", function() {
-      var iPhone  = new gsm.Phone('iPhone', 'iPhone 5c', "iOS");
+      var iPhone  = new Phone('iPhone', 'iPhone 5c', "iOS");
       expect(iPhone.isPowerOn).toBe(false);
       expect(iPhone.isAndroid).not.toBeTruthy();
       expect(iPhone.isIphone).toBeTruthy();
@@ -185,9 +185,9 @@
     });    
 
     it("The phone should know the difference between iPhone and MTK devices ", function() {
-      var nokia  = new gsm.Phone('Nokia', 'c4','Unknonw');
-      var samsung  = new gsm.Phone('Samsung', 'S3', 'Android');
-      var iphone  = new gsm.Phone('iPhone', 'i7', 'iOS');
+      var nokia  = new Phone('Nokia', 'c4','Unknonw');
+      var samsung  = new Phone('Samsung', 'S3', 'Android');
+      var iphone  = new Phone('iPhone', 'i7', 'iOS');
       expect(nokia.doubleSim).toBe(false);
       expect(nokia.isAndroid).toBe(false);
       expect(samsung.isAndroid).toBe(true);

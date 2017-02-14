@@ -1,29 +1,27 @@
-'use strict'
-module.exports = {
-	Phone: function(name,model,os) {	
+	function Telephone(){
+		this.displayMessage = "";
+		this.isPowerOn = false;	
+	}
+	Telephone.prototype.powerOn = function(){
+		this.displayMessage = "Device is up";
+ 		this.isPowerOn = true;	
+	};
+	Telephone.prototype.powerOff = function(){
+		this.displayMessage = "";
+ 		this.isPowerOn = false;
+	};
+	Phone = function(name,model,os) {	
 		//Ensure Only string can be assigened. Not [1]
 		(typeof name == "string") ? this.name = name	: this.name = "General";
 		(typeof model == "string") ? this.model = model	: this.model = "Mobile";
 		(typeof os == "string") ? this.os = os	: this.os = "Android";
-		this.isPowerOn = false;	
-		this.isCharging = false;
-		this.charge = function() {		
-			this.isCharging = true;		
-		}	
-		this.stopCharge = function() {	
-			this.isCharging = false;	
-		}
-		this.powerOn = function() {		
-			this.isPowerOn = true;		
-		}
-		this.powerOff = function() {	
-			this.isPowerOn = false;		
-		}	
+		
 		if (this.name  === "Tecno" || this.name === "Infinix" || this.name === "General") { 	
 		  	this.CPU = "MTK Processor";		
 		  	this.isAndroid = true;			
 		  	this.doubleSim = true;			
-		  	this.isIphone = false;			
+		  	this.isIphone = false;	
+		  	this.isCharging = false;		
 		}	
 		else {			
 			if (this.os === "iOS") {
@@ -49,5 +47,15 @@ module.exports = {
 			}
 		}
 	}
+	Phone.prototype = new Telephone();
+	Phone.prototype.charge = function() {
+		this.isCharging = true;	
+	};
+	Phone.prototype.stopCharge = function() {
+		this.isCharging = false;	
+	};
+	Phone.prototype.powerOn = function(){
+		this.displayMessage = "Device is up, seraching for wireless signal";
+ 		this.isPowerOn = true;	
+	};	
 
-};
